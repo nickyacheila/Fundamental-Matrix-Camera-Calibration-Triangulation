@@ -1,5 +1,8 @@
 function [F_matrix] = estimate_fund_matrix(matches)
-
+persistent n;
+if isempty(n)
+        n = 0;
+end
 % create matrix A
 A=ones(size(matches,1),9);
 A(:,1)=matches(:,1).*matches(:,3);
@@ -27,7 +30,10 @@ S1(I1,I1)=0;
 F_matrix=U1*S1*V1';
 f1=reshape(F_matrix,9,1);
 Z=A*f1;
-disp(Z);
+if sum(Z<1)<2
+    n=n+1;
+%     disp(n);
+end
 
 end
 
