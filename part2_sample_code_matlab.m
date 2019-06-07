@@ -24,7 +24,7 @@ I2 = imresize(I2, 0.5, 'bilinear');
 [matches1, matches2] = find_matching_points( I1, I2 );
 fprintf('Found %d possibly matching features\n',size(matches1,1));
 plot_correspondence(I1, I2, matches1(:,1), matches1(:,2), matches2(:,1),matches2(:,2));
-pause;
+% pause;
 
 %% Calculate the fundamental matrix using RANSAC
 % !!! You will need to implement ransac_fundamental_matrix. !!!
