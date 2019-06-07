@@ -11,8 +11,8 @@ close all
 % The Notre Dame pair is difficult because the keypoints are largely on the
 % same plane. Still, even an inaccurate fundamental matrix can do a pretty
 % good job of filtering spurious matches.
-I1 = imread('../data/NotreDame/NotreDame1.jpg');
-I2 = imread('../data/NotreDame/NotreDame2.jpg');
+I1 = imread('data/NotreDame/NotreDame1.jpg');
+I2 = imread('data/NotreDame/NotreDame2.jpg');
 I1 = imresize(I1, 0.5, 'bilinear');
 I2 = imresize(I2, 0.5, 'bilinear');
 

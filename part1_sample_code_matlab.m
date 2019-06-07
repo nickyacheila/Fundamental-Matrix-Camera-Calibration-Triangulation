@@ -8,9 +8,9 @@
 %% load images and match files for the first example
 %%
 
-I1 = imread('../data/library/library1.jpg');
-I2 = imread('../data/library/library2.jpg');
-matches = load('../data/library/library_matches.txt'); 
+I1 = imread('data/library/library1.jpg');
+I2 = imread('data/library/library2.jpg');
+matches = load('data/library/library_matches.txt'); 
 
 N = size(matches,1);
 
