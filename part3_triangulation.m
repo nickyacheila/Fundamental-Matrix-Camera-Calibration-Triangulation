@@ -7,9 +7,12 @@ clear
 close all
 
 % Load house 
-camera_matrix_1 = load('data/house/house1_camera.txt');
-camera_matrix_2 = load('data/house/house2_camera.txt');
-matches = load('data/house/house_matches.txt');
+% camera_matrix_1 = load('data/house/house1_camera.txt');
+% camera_matrix_2 = load('data/house/house2_camera.txt');
+% matches = load('data/house/house_matches.txt');
+camera_matrix_1 = load('data/library/library1_camera.txt');
+camera_matrix_2 = load('data/library/library2_camera.txt');
+matches = load('data/library/library_matches.txt');
 
 % Initiate empty matrix to save the 3D coordinates
 coordinates=zeros(size(matches));
@@ -41,12 +44,22 @@ for i=1:size(matches, 1)
    
    % Add to coordinates matrix
    coordinates(i, :)=X;
-   plot3(camera_1_coordinates(1:3,:), camera_2_coordinates(1:3,:),X(1:3,:))
-   hold on
+%    plot3([camera_1_coordinates(1), X(1)],[camera_1_coordinates(3), X(3)],[camera_1_coordinates(2), X(2)])
+%    hold on
+%    plot3([camera_2_coordinates(1), X(1)],[camera_2_coordinates(3), X(3)],[camera_2_coordinates(2), X(2)])
+%    hold on
 
 end
-hold off
+% xlabel('x')
+% ylabel('z')
+% zlabel('y')
+% hold off
 
 % Plot coordinates
-% scatter3(coordinates(:, 1), coordinates(:, 2), coordinates(:, 3))
+scatter3(camera_1_coordinates(1), camera_1_coordinates(3), camera_1_coordinates(2))
+hold on
+scatter3(camera_2_coordinates(1), camera_2_coordinates(3), camera_2_coordinates(2))
+hold on
+scatter3(coordinates(:, 1), coordinates(:, 3), coordinates(:, 2))
+hold off
 
