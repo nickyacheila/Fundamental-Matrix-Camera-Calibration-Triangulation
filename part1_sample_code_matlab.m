@@ -23,7 +23,7 @@ plot_correspondence(I1, I2, matches(:,1), matches(:,2), matches(:,3),matches(:,4
 % pause;
 
 %% first, fit fundamental matrix to the matches ()
-F_matrix = estimate_fund_matrix(matches); % this is a function that you should implement
+F_matrix = estimate_fund_matrix(matches);
 
 %% Draw the epipolar lines on the images and corresponding matches
 draw_epipolar_lines(F_matrix, I1, I2, matches(:, 1:2), matches(:, 3:4));

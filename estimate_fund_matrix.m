@@ -15,15 +15,15 @@ A(:,7)=matches(:,3);
 A(:,8)=matches(:,4);
 
 %first SVD
-[U,S,V]=svd(A);
+[~,S,V]=svd(A);
 %find min singular value
-[M,I]=min(diag(S));
+[~,I]=min(diag(S));
 f=V(:,I);
 
 F_matrix1=reshape(f,3,3);
 
 [U1,S1,V1]=svd(F_matrix1);
-[M1,I1]=min(diag(S1));
+[~,I1]=min(diag(S1));
 
 S1(I1,I1)=0;
 
