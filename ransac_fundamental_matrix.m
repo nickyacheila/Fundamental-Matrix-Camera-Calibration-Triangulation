@@ -1,7 +1,7 @@
 function [best_fund_matrix, matched_points_a, matched_points_b] = ransac_fundamental_matrix(matches1, matches2)
 s=8;
-d_threshold=10;
-T= 250; % size(matches1,1)*70/100;
+d_threshold=0.8;
+T= 80;
 max_inliers=0;
 best_indexes=zeros(size(matches1,1),1);
 best_distances=zeros(size(matches1,1),1);
@@ -46,8 +46,7 @@ matched_points_b=matches2(best_indexes,:);
 
 best_fund_matrix=estimate_fund_matrix([matched_points_a matched_points_b]);
 
-
-% What is returned values matched_points_a and matched_points_b
+disp(max_inliers)
 
 end
 

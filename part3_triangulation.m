@@ -7,14 +7,14 @@ clear
 close all
 
 % Load house 
-% camera_matrix_1 = load('data/house/house1_camera.txt');
-% camera_matrix_2 = load('data/house/house2_camera.txt');
-% matches = load('data/house/house_matches.txt');
+camera_matrix_1 = load('data/house/house1_camera.txt');
+camera_matrix_2 = load('data/house/house2_camera.txt');
+matches = load('data/house/house_matches.txt');
 
 % Load Library image
-camera_matrix_1 = load('data/library/library1_camera.txt');
-camera_matrix_2 = load('data/library/library2_camera.txt');
-matches = load('data/library/library_matches.txt');
+% camera_matrix_1 = load('data/library/library1_camera.txt');
+% camera_matrix_2 = load('data/library/library2_camera.txt');
+% matches = load('data/library/library_matches.txt');
 
 % Initiate empty matrix to save the 3D coordinates of matching points
 coordinates=zeros(size(matches));
@@ -64,6 +64,9 @@ end
 xlabel('x')
 ylabel('z')
 zlabel('y')
+xlim([-10 10])
+ylim([-10 10])
+zlim([-10 10])
 hold off
 
 % Plot coordinates as points on the 3D world. Again Z and Y are inverted. 
@@ -73,5 +76,11 @@ hold on
 scatter3(camera_2_coordinates(1), camera_2_coordinates(3), camera_2_coordinates(2))
 hold on
 scatter3(coordinates(:, 1), coordinates(:, 3), coordinates(:, 2))
+xlabel('x')
+ylabel('z')
+zlabel('y')
+xlim([-10 10])
+ylim([-10 10])
+zlim([-10 10])
 hold off
 
