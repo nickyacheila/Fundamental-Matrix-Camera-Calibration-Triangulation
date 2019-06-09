@@ -20,7 +20,7 @@ N = size(matches,1);
 %% to use it to produce the results for the assignment
 %%
 plot_correspondence(I1, I2, matches(:,1), matches(:,2), matches(:,3),matches(:,4));
-% pause;
+pause;
 
 %% first, fit fundamental matrix to the matches ()
 F_matrix = estimate_fund_matrix(matches);

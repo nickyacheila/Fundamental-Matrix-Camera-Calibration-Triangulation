@@ -1,14 +1,13 @@
 function [best_fund_matrix, matched_points_a, matched_points_b] = ransac_fundamental_matrix(matches1, matches2)
 s=8;
-d_threshold=2;
-T= size(matches1,1)*70/100;
+d_threshold=10;
+T= 250; % size(matches1,1)*70/100;
 max_inliers=0;
 best_indexes=zeros(size(matches1,1),1);
 best_distances=zeros(size(matches1,1),1);
 
 for i =1:1000
     % Initiate distances to -1
-%     distances=-ones(size(matches1,1),1);
     distances = Inf(size(matches1,1),1);
 
     % Get the indices of the sample points
@@ -35,11 +34,13 @@ for i =1:1000
     % update the max values of fundamental matrix and inliers found
     if inliers_size>T && inliers_size>max_inliers
         max_inliers=inliers_size;
-        best_indexes=(distances>-1);
+        best_indexes=(distances<Inf);
         best_distances=distances;
     end
 
 end
+
+
 matched_points_a=matches1(best_indexes,:);
 matched_points_b=matches2(best_indexes,:);
 

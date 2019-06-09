@@ -25,7 +25,9 @@ camera_1_coordinates=V1(:, length(V1))/V1(end);
 [U2,S2,V2]=svd(camera_matrix_2);
 camera_2_coordinates=V2(:, length(V2))/V2(end);
 
+% Initiate a figure to hold the first graph
 figure(1)
+
 % Iterate over matching points 
 for i=1:size(matches, 1)
    A = zeros(4);

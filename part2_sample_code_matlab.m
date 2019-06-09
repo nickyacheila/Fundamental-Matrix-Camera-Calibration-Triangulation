@@ -24,16 +24,19 @@ I2 = imresize(I2, 0.5, 'bilinear');
 [matches1, matches2] = find_matching_points( I1, I2 );
 fprintf('Found %d possibly matching features\n',size(matches1,1));
 plot_correspondence(I1, I2, matches1(:,1), matches1(:,2), matches2(:,1),matches2(:,2));
+pause;
 
 %% Calculate the fundamental matrix using RANSAC
 [F_matrix, matched_points_a, matched_points_b] = ransac_fundamental_matrix(matches1, matches2);
 
 %% plot the best matched points following RANSAC for the fundamental matrix
 plot_correspondence(I1, I2, matched_points_a(:,1), matched_points_a(:,2), matched_points_b(:,1),matched_points_b(:,2));
+pause;
 
 %% Draw the epipolar lines on the images and corresponding matches
 draw_epipolar_lines(F_matrix, I1, I2, matched_points_a, matched_points_b);
 
+% We are already reestimating inside the ransac_fundamental_matrix function
 % %optional - re estimate the fundamental matrix using ALL the inliers.
 % [ F_matrix ] = estimate_fundamental_matrix_james(matched_points_a, matched_points_b);
 % draw_epipolar_lines(F_matrix, I1, I2, matched_points_a, matched_points_b);
