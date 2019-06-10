@@ -1,8 +1,5 @@
-function [F_matrix] = estimate_fund_matrix(matches)
-persistent n;
-if isempty(n)
-        n = 0;
-end
+function [F_matrix,mse] = estimate_fund_matrix(matches)
+
 % create matrix A
 A=ones(size(matches,1),9);
 A(:,1)=matches(:,1).*matches(:,3);
@@ -30,10 +27,17 @@ S1(I1,I1)=0;
 F_matrix=U1*S1*V1';
 f1=reshape(F_matrix,9,1);
 Z=A*f1;
-if sum(Z<1)<2
-    n=n+1;
-%     disp(n);
-end
 
+residual=abs(Z);
+% crreate plot of residuals
+% plot(residual);
+% xlabel('Point Index');
+% ylabel('Distance');
+% title('Error Overview');
+% axis([0 310 -0.01 0.05]);
+
+MSE_all= sum(Z.^2) / length(Z);
+% fprintf(' The overall MSE is %s\n',MSE_all);
+mse=MSE_all;
 end
 
